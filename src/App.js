@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {Component} from 'react'
+import Navbar from './componets/Navbar'
+import {BrowserRouter, Route} from 'react-router-dom'
+import Home from './componets/Home'
+import Contact from './componets/Contact'
+import About from './componets/About'
+import Post from './componets/Post'
 
-function App() {
+
+
+class App extends Component {
+  render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+    <div className='App'>
+      <Navbar />
+      <Route exact path='/' component={Home} />
+      <Route path='/about' component={About} />
+      <Route path='/contact' component ={Contact} />
+      <Route path='/:post_id' component ={Post} />
     </div>
-  );
+    </BrowserRouter>
+  )
+}
 }
 
-export default App;
+export default App 
